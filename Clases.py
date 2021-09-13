@@ -1,5 +1,8 @@
+import os
+
 class Auto:
     #Atributos de Clase
+    cantidadRuedas = 4
 
     #Constructor
     def __init__(self, pat, nchasis, color, marca, cilin, comb, tmotor, tauto, model, year):
@@ -24,11 +27,14 @@ class Auto:
     def setColor(self, color):
         self.__color = color
 
-    def GetInformacion(self):
-        return "Auto Marca: ", self.marca, " Año: ", self.year, " Modelo: ", self.modelo, " Patente N: ", self.patente
+    def GetInfo(self):
+        return "Auto Marca: ", self.marca, " Año: ", self.year, " Modelo: ", self.modelo, " Patente N: ", self.__patente
 
     def EncenderLuces():
         pass
+
+    def getCantidadRuedas():
+        return Auto.cantidadRuedas
 
 
 class Mecanico:
@@ -59,3 +65,18 @@ class Reparacion:
         self.autoAsignado.setColor(color)
     
 
+class Menu:
+
+    def MostrarMenu():
+        print("---------------------------SISTEMA DE REPARACIONES---------------------------------------")
+        print(" ")
+        print("Presione 1 para Agregar Automoviles: ")
+        print("Presione 2 para Agregar Mecanicos: ")
+        print("Presione 3 para Agregar Reparaciones: ")
+
+        print("Presione 4 para Ver Automoviles: ")
+
+        
+
+    def LimpiarConsola():
+        os.system("cls" if os.name=="nt" else "clear" )

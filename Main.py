@@ -25,15 +25,22 @@ autoUno = Auto(
     year=2013)
 
 
+
+print(autoDos.getPatente())
+print(Auto.getCantidadRuedas()) #Self
+
 mecanicoJuan = Mecanico(nomb="Juan", ape="Valdes Gonzalez", edad=25)
 mecanicoPedro = Mecanico(nomb="Pedro", ape="Roman Ramirez", edad=40)
 
 listaRepuestos1 = ["Empaquetadura de Culata","Pegamento Firme","Sellante"]
 
 reparacion1 = Reparacion(mecanico=mecanicoPedro, auto=autoDos, costo=170800, repuestos=listaRepuestos1)
+
+
 reparacion1.setNewColor("Azul")
 
 print(reparacion1.getInfoReparacion())
+
 
 
 
