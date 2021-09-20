@@ -28,7 +28,7 @@ class Auto:
         self.__color = color
 
     def GetInfo(self):
-        return "Auto Marca: ", self.marca, " Año: ", self.year, " Modelo: ", self.modelo, " Patente N: ", self.__patente
+        return f"Auto Marca: {self.marca}, Patente: {self.__patente}, Modelo: {self.modelo}, Color: {self.__color}, Año: {self.year}"
 
     def EncenderLuces():
         pass
@@ -49,6 +49,9 @@ class Mecanico:
         else:
             self.mayorEdad = False
 
+    def GetInfo(self):
+        return f"Mecanico Nombre: {self.nombres}, Apellidos: {self.apellidos}, Edad: {self.edad}"
+
 
 class Reparacion:
 
@@ -58,7 +61,7 @@ class Reparacion:
         self.costo = costo
         self.repuestos = repuestos
 
-    def getInfoReparacion(self):
+    def GetInfo(self):
         return "Auto Reparado: " + self.autoAsignado.getPatente() + " Color: " + self.autoAsignado.getColor() + " Mecanico Asignado: " + self.mecanicoAsignado.nombres + " Costo Total: $" + str(self.costo)
 
     def setNewColor(self, color):
@@ -75,7 +78,8 @@ class Menu:
         print("Presione 3 para Agregar Reparaciones: ")
 
         print("Presione 4 para Ver Automoviles: ")
-
+        print("Presione 5 para Ver Mecanicos: ")
+        print("Presione 6 para Ver Reparaciones: ")
         
 
     def LimpiarConsola():
