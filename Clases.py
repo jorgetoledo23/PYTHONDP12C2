@@ -5,30 +5,41 @@ class Auto:
     cantidadRuedas = 4
 
     #Constructor
-    def __init__(self, pat, nchasis, color, marca, cilin, comb, tmotor, tauto, model, year):
+    def __init__(self, pat, nchasis, color, marca, model, year):
         #Encapsulacion
-        self.__patente = str(pat).upper()
-        self.numeroChasis = nchasis
-        self.__color = color
-        self.marca = marca
-        self.cilindrada = cilin
-        self.tipoCombustible = comb
-        self.tipoMotor = tmotor
-        self.tipoAuto = tauto
-        self.modelo = model
-        self.year = year
+        self.__Patente = str(pat).upper()
+        self.__NumeroChasis = nchasis
+        self.__Color = color
+        self.__Marca = marca
+        self.__Modelo = model
+        self.__Year = year
 
     def getPatente(self):
-        return self.__patente
+        return self.__Patente
 
     def getColor(self):
-        return self.__color
+        return self.__Color
     
     def setColor(self, color):
-        self.__color = color
+        self.__Color = color
+
+    def setNChasis(self, nchas):
+        self.__NumeroChasis = nchas
+
+    def setMarca(self, marca):
+        self.__Marca = marca
+
+    def setModelo(self, modelo):
+        self.__Modelo = modelo
+
+    def setPatente(self, pat):
+        self.__Patente = pat
+
+    def setYear(self, year):
+        self.__Year = year
 
     def GetInfo(self):
-        return f"Auto Marca: {self.marca}, Patente: {self.__patente}, Modelo: {self.modelo}, Color: {self.__color}, Año: {self.year}"
+        return f"Instancia: {self} ,Auto Patente: {self.__Patente}, Numero Chasis: {self.__NumeroChasis}, Marca: {self.__Marca},  Modelo: {self.__Modelo}, Color: {self.__Color}, Año: {self.__Year}"
 
     def EncenderLuces():
         pass
@@ -39,30 +50,33 @@ class Auto:
 
 class Mecanico:
     #Constructor
-    def __init__(self, nomb, ape, edad):
-        self.nombres = nomb
-        self.apellidos = ape,
-        self.edad = edad
+    def __init__(self, rut, nomb, ape, edad, dir):
+        self.__Rut = rut
+        self.__Nombres = nomb
+        self.__Apellidos = ape
+        self.__Edad = edad
+        self.__Direccion = dir
 
-        if self.edad >= 18:
-            self.mayorEdad = True
+        if self.__Edad >= 18:
+            self.__MayorEdad = True
         else:
-            self.mayorEdad = False
+            self.__MayorEdad = False
 
     def GetInfo(self):
-        return f"Mecanico Nombre: {self.nombres}, Apellidos: {self.apellidos}, Edad: {self.edad}"
+        return f"Mecanico RUT: {self.__Rut} Nombre: {self.__Nombres}, Apellidos: {self.__Apellidos}, Edad: {self.__Edad}, Direccion: {self.__Direccion}"
 
 
 class Reparacion:
 
     def __init__(self, mecanico, auto, costo, repuestos):
-        self.mecanicoAsignado = mecanico
-        self.autoAsignado = auto
-        self.costo = costo
-        self.repuestos = repuestos
+        self.__Mecanico = mecanico
+        self.__Auto = auto
+        self.__Costo = costo
+        self.__Repuesto = repuestos
 
     def GetInfo(self):
-        return "Auto Reparado: " + self.autoAsignado.getPatente() + " Color: " + self.autoAsignado.getColor() + " Mecanico Asignado: " + self.mecanicoAsignado.nombres + " Costo Total: $" + str(self.costo)
+        #return "Auto Reparado: " + self.__Auto.getPatente() + " Color: " + self.autoAsignado.getColor() + " Mecanico Asignado: " + self.mecanicoAsignado.nombres + " Costo Total: $" + str(self.costo)
+        return f"Info Reparacion: Auto Instancia: {self.__Auto} ,Auto: {self.__Auto.GetInfo()}, Mecanico: {self.__Mecanico.GetInfo()}"
 
     def setNewColor(self, color):
         self.autoAsignado.setColor(color)
@@ -80,6 +94,9 @@ class Menu:
         print("Presione 4 para Ver Automoviles: ")
         print("Presione 5 para Ver Mecanicos: ")
         print("Presione 6 para Ver Reparaciones: ")
+
+        print("Presione 7 para Modificar un Automovil: ")
+        print("Presione 8 para Eliminar un Automovil: ")
         
 
     def LimpiarConsola():
