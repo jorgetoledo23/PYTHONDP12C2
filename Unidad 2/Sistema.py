@@ -10,14 +10,13 @@ while True:
 
     oP = str(input(" : "))
 
-    #Gestion de Clientes
     if oP == "1":
         mP.LimpiarConsola()
         mP.MenuSecundario("Cliente")
         oP = str(input(" : "))
 
         if oP == "1":
-            #Agregar Cliente a la base de Datos
+            #Insertar data Cliente a la Base de Datos
             mP.LimpiarConsola()
             print("======= Agregando Cliente =======")
             print("Complete la Informacion Solicitada:")
@@ -38,11 +37,11 @@ while True:
             mP.ConfirmacionIngreso("Cliente")
 
         if oP == "2":
-            #Leer Todos los Clientes almacenados en mi BD
+            #Listar TODOS los clientes que esten almacenados en la base de datos
             mP.LimpiarConsola()
             print("======= Listando Clientes =======")
             print("=================================")
-            print("")    
+            print("")
 
             for C in dao.ListarClientes():
                 print(C.getInfo())
@@ -50,17 +49,17 @@ while True:
             print("")
             input("Presione Enter para Continuar...")
 
-        if oP == "5":
+        if oP == "0":
             pass
 
-    #Gestion de Mecanicos
     if oP == "2":
+        #Gestionamos Mecanicos
         mP.LimpiarConsola()
-        mP.MenuSecundario('Mecanico')
+        mP.MenuSecundario("Mecanico")
         oP = str(input(" : "))
 
         if oP == "1":
-            #Agregar Mecanico a la base de Datos
+            #Insertar data Mecanico a la Base de Datos
             mP.LimpiarConsola()
             print("======= Agregando Mecanico =======")
             print("Complete la Informacion Solicitada:")
@@ -81,11 +80,11 @@ while True:
             mP.ConfirmacionIngreso("Mecanico")
 
         if oP == "2":
-            #Leer Todos los Clientes almacenados en mi BD
+            #Listar TODOS los Mecacnicos que esten almacenados en la base de datos
             mP.LimpiarConsola()
             print("======= Listando Mecanicos =======")
             print("=================================")
-            print("")    
+            print("")
 
             for M in dao.ListarMecanicos():
                 print(M.getInfo())
@@ -93,8 +92,56 @@ while True:
             print("")
             input("Presione Enter para Continuar...")
 
-        if oP == "5":
+
+        if oP == "0":
             pass
 
+    if oP == "3":
+        #Gestionamos Vehiculos
+        mP.LimpiarConsola()
+        mP.MenuSecundario("Vehiculo")
+        oP = str(input(" : "))
 
+        if oP == "1":
+            #Ingresar nuevo Vehiculo
+            mP.LimpiarConsola()
+            print("======= Agregando Vehiculo =======")
+            print("Complete la Informacion Solicitada:")
+            print("")
 
+            Patente = input("Ingrese Patente: ")
+            Marca = input("Ingrese Marca: ")
+            Modelo = input("Ingrese Modelo: ")
+            Year = input("Ingrese Year: ")
+            NChasis =  input("Ingrese Numero de Chasis: ")
+            Color = input("Ingrese Color: ")
+
+            mP.LimpiarConsola()
+            print("======= Seleccion Cliente =======")
+            print("")
+
+            for C in dao.ListarClientes():
+                print(C.getInfo())
+
+            print("")
+        
+            rutCliente = input("Ahora Ingrese Rut del Cliente de la Lista Anterior: ")
+
+            A = Auto(Patente, NChasis, Color, Marca, Year, Modelo, rutCliente)
+
+            dao.InsertarVehiculo(A)
+
+            mP.ConfirmacionIngreso("Vehiculo")
+
+        if oP == "2":
+            #listar Vehiculos
+            mP.LimpiarConsola()
+            print("======= Listando Vehiculos =======")
+            print("=================================")
+            print("")
+
+            for A in dao.ListarVehiculos():
+                print(A.getInfo())
+
+            print("")
+            input("Presione Enter para Continuar...")
