@@ -3,7 +3,7 @@ CREATE DATABASE EjercicioCrud;
 USE EjercicioCrud;
 
 CREATE TABLE tbl_EquiposChilenos (
-	DNI int auto_increment primary key,
+	DNI int primary key,
     Nombre varchar(100),
     EstadioLocalia varchar(100),
     CapacidadEstadio int,
