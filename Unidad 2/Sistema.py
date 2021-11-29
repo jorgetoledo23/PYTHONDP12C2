@@ -49,8 +49,66 @@ while True:
             print("")
             input("Presione Enter para Continuar...")
 
+
+        if oP == "3":
+            #Actualizar un Cliente
+            #Listar Clientes
+            mP.LimpiarConsola()
+            print("======= Editando Cliente =======")
+            print("")
+
+            for C in dao.ListarClientes():
+                print(C.getInfo())
+            print("")
+
+            RutAntiguo = input("Digite el Rut del Cliente a Actualizar: ")
+
+            mP.LimpiarConsola()
+            print(f"======= Editando Cliente {RutAntiguo} =======")
+            print("")
+
+            Rut = str(input("Rut: "))
+            Nombres = str(input("Nombres: "))
+            Apellidos = str(input("Apellidos: "))
+            Telefono = str(input("Telefono: "))
+            Correo = str(input("Correo: "))
+            Direccion = str(input("Direccion: "))
+            Comuna = str(input("Comuna: "))
+
+            C = Cliente(Rut,Nombres,Apellidos,Correo,Telefono,Direccion,Comuna)
+
+            dao.ActualizarCliente(C, RutAntiguo)
+
+            mP.ConfirmacionEdit("Cliente")
+
+        if oP == "4":
+            #Eliminar Cliente
+            mP.LimpiarConsola()
+            print("======= Eliminando Cliente =======")
+            print("Cuidado, la data eliminada no se puede recuperar!")
+            print("")
+
+            for C in dao.ListarClientes():
+                print(C.getInfo())
+            print("")
+
+            Rut = input("Digite el Rut del Cliente a Elimninar: ")
+
+            confirmacion = input(f"Estas seguro de eliminar al Clinete {Rut}? (Y/N): ")
+
+            if confirmacion == "Y":
+                dao.EliminarCliente(Rut)
+                mP.ConfirmacionDelete("Cliente")
+            if confirmacion == "N":
+                print("Operacion Cancelada!")
+                input("Presione Enter para Continuar!")
+
+        
+
         if oP == "0":
             pass
+
+        oP = None
 
     if oP == "2":
         #Gestionamos Mecanicos
@@ -91,6 +149,59 @@ while True:
 
             print("")
             input("Presione Enter para Continuar...")
+
+
+        if oP == "3":
+            #Actualizar Mecanico
+            mP.LimpiarConsola()
+            print("======= Editando Mecanico =======")
+            print("")
+
+            for M in dao.ListarMecanicos():
+                print(M.getInfo())
+            print("")
+
+            RutAntiguo = input("Digite el Rut del Mecanico a Actualizar: ")
+
+            mP.LimpiarConsola()
+            print(f"======= Editando Mecanico {RutAntiguo} =======")
+            print("")
+
+            Rut = str(input("Rut: "))
+            Nombres = str(input("Nombres: "))
+            Apellidos = str(input("Apellidos: "))
+            Telefono = str(input("Telefono: "))
+            Correo = str(input("Correo: "))
+            Direccion = str(input("Direccion: "))
+            Comuna = str(input("Comuna: "))
+
+            M = Mecanico(Rut,Nombres,Apellidos,Correo,Telefono,Direccion,Comuna)
+
+            dao.ActualizarMecanico(M, RutAntiguo)
+
+            mP.ConfirmacionEdit("Mecanico")
+
+        if oP == "4":
+            #Eliminar Mecanico
+            mP.LimpiarConsola()
+            print("======= Eliminando Mecanico =======")
+            print("Cuidado, la data eliminada no se puede recuperar!")
+            print("")
+
+            for C in dao.ListarMecanicos():
+                print(C.getInfo())
+            print("")
+
+            Rut = input("Digite el Rut del Mecanico a Elimninar: ")
+
+            confirmacion = input(f"Estas seguro de eliminar al Mecanico {Rut}? (Y/N): ")
+
+            if confirmacion == "Y":
+                dao.EliminarMecanico(Rut)
+                mP.ConfirmacionDelete("Mecanico")
+            if confirmacion == "N":
+                print("Operacion Cancelada!")
+                input("Presione Enter para Continuar!")
 
 
         if oP == "0":
@@ -145,3 +256,27 @@ while True:
 
             print("")
             input("Presione Enter para Continuar...")
+
+        if oP == "4":
+            #Eliminar Auto
+            mP.LimpiarConsola()
+            print("======= Eliminando Auto =======")
+            print("Cuidado, la data eliminada no se puede recuperar!")
+            print("")
+
+            for C in dao.ListarVehiculos():
+                print(C.getInfo())
+            print("")
+
+            Patente = input("Digite el Patente del Auto a Eliminar: ")
+
+            confirmacion = input(f"Estas seguro de eliminar al Auto {Patente}? (Y/N): ")
+
+            if confirmacion == "Y":
+                dao.EliminarVehiculo(Patente)
+                mP.ConfirmacionDelete("Auto")
+            if confirmacion == "N":
+                print("Operacion Cancelada!")
+                input("Presione Enter para Continuar!")
+
+        

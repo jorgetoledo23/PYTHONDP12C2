@@ -30,6 +30,26 @@ class DAO:
         cursor.execute(add_cliente, data_cliente)
         self.cnx.commit()
 
+    def ActualizarCliente(self, C, Rut):
+        add_cliente = ("UPDATE tbl_clientes SET rut = %s, nombres = %s, apellidos = %s, correo = %s, telefono = %s, "
+                    " direccion = %s, comuna = %s"
+                    " WHERE rut = %s")
+
+        data_cliente = (C.getRut(), C.getNombres(), C.getApellidos(), C.getCorreo(), C.getTelefono(), C.getDireccion(), C.getComuna(), Rut)
+
+        cursor = self.cnx.cursor()
+        cursor.execute(add_cliente, data_cliente)
+        self.cnx.commit()
+
+    def EliminarCliente(self, Rut):
+        eliminar_cliente = ("DELETE FROM tbl_clientes WHERE rut = %s")
+
+        data_cliente = (Rut,)
+
+        cursor = self.cnx.cursor()
+        cursor.execute(eliminar_cliente, data_cliente)
+        self.cnx.commit()
+
 
     def InsertarMecanico(self, M):
         add_mecanico = ("insert into tbl_mecanicos"
@@ -41,6 +61,26 @@ class DAO:
 
         cursor = self.cnx.cursor()
         cursor.execute(add_mecanico, data_mecanico)
+        self.cnx.commit()
+
+    def ActualizarMecanico(self, M, Rut):
+        add_mecanico = ("UPDATE tbl_mecanicos SET rut = %s, nombres = %s, apellidos = %s, correo = %s, telefono = %s, "
+                    " direccion = %s, comuna = %s"
+                    " WHERE rut = %s")
+
+        data_mecanico = (M.getRut(), M.getNombres(), M.getApellidos(), M.getCorreo(), M.getTelefono(), M.getDireccion(), M.getComuna(), Rut)
+
+        cursor = self.cnx.cursor()
+        cursor.execute(add_mecanico, data_mecanico)
+        self.cnx.commit()
+
+    def EliminarMecanico(self, Rut):
+        eliminar_mecanico = ("DELETE FROM tbl_mecanicos WHERE rut = %s")
+
+        data_mecanico = (Rut,)
+
+        cursor = self.cnx.cursor()
+        cursor.execute(eliminar_mecanico, data_mecanico)
         self.cnx.commit()
 
 
@@ -55,6 +95,17 @@ class DAO:
         cursor = self.cnx.cursor()
         cursor.execute(add_vehiculo, data_vehiculo)
         self.cnx.commit()
+
+
+    def EliminarVehiculo(self, Patente):
+        eliminar_Vehiculo = ("DELETE FROM tbl_Autos WHERE Patente = %s")
+
+        data_Vehiculo = (Patente,)
+
+        cursor = self.cnx.cursor()
+        cursor.execute(eliminar_Vehiculo, data_Vehiculo)
+        self.cnx.commit()
+
 
     def ListarClientes(self):
         cursor = self.cnx.cursor()
@@ -77,8 +128,6 @@ class DAO:
             listaMecanicos.append(M)
 
         return listaMecanicos
-        
-
 
     def ListarVehiculos(self):
         cursor = self.cnx.cursor()
